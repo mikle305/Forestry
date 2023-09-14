@@ -8,7 +8,7 @@
       "hash": "c170af5642889b9034b8f910c1a61a4939103ba5"
     },
     "com.heroiclabs.nakama-unity": {
-      "version": "https://github.com/heroiclabs/nakama-unity.git?path=/Packages/Nakama",
+      "version": "https://github.com/heroiclabs/nakama-unity.git?path=/Packages/Nakama#v3.9.0",
       "depth": 0,
       "source": "git",
       "dependencies": {

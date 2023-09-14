@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace StaticData
+namespace StaticData.Music
 {
     [Serializable]
     public class Music

@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace StaticData
+namespace StaticData.Music
 {
     [CreateAssetMenu(menuName = "Static Data/Music Config", fileName = "MusicConfig")]
     public class MusicConfig : ScriptableObject

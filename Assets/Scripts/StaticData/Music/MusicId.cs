@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace StaticData
+namespace StaticData.Music
 {
     [Serializable]
     public enum MusicId
