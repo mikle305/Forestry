@@ -1,6 +1,6 @@
 ﻿using GameFlow.Context;
 
-namespace GameFlow.Stages
+namespace GameFlow.States
 {
     public class CheckSessionState : GameState
     {

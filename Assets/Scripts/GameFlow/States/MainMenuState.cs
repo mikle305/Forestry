@@ -2,7 +2,7 @@
 using GameFlow.Context;
 using Services;
 
-namespace GameFlow.Stages
+namespace GameFlow.States
 {
     public class MainMenuState : GameState
     {

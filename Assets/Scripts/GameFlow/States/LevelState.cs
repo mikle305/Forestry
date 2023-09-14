@@ -3,7 +3,7 @@ using GameFlow.Context;
 using Services;
 using StaticData;
 
-namespace GameFlow.Stages
+namespace GameFlow.States
 {
     public class LevelState : GameState
     {

@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 using Additional;
-using GameFlow.Stages;
+using GameFlow.States;
 
 namespace GameFlow.Context
 {
     public class GameStateMachine
     {
         private GameState _currentState;
-        private Dictionary<Type, GameState> _states;
+        private readonly Dictionary<Type, GameState> _states = new();
 
 
         public void Enter<T>() where T : GameState

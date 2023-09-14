@@ -5,7 +5,7 @@ using Services;
 using Services.Server;
 using UI.WindowsInfo;
 
-namespace GameFlow.Stages
+namespace GameFlow.States
 {
     public class AuthMenuState : GameState
     {

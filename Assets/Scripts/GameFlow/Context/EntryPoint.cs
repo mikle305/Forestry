@@ -1,6 +1,5 @@
-﻿using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
-using GameFlow.Stages;
+﻿using Cysharp.Threading.Tasks;
+using GameFlow.States;
 using Services;
 
 namespace GameFlow.Context
@@ -35,7 +34,7 @@ namespace GameFlow.Context
             };
 
             foreach (GameState state in states) 
-                _stateMachine.AddState(state);
+                stateMachine.AddState(state);
 
             return stateMachine;
         }

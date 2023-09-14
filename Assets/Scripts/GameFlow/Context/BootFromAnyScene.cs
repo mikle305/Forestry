@@ -1,33 +1,29 @@
-﻿using Additional.Constants;
-using UnityEngine;
+﻿#if UNITY_EDITOR
+
+using Additional.Constants;
 using UnityEngine.SceneManagement;
-#if UNITY_EDITOR
-    using UnityEditor;
-#endif
+using UnityEditor;
 
 namespace GameFlow.Context
 {
-#if UNITY_EDITOR
     [InitializeOnLoad]
-#endif
     public class BootFromAnyScene
     {
-#if UNITY_EDITOR
-        static BootFromAnyScene() 
-            => EditorApplication.playModeStateChanged += Run;
-#endif
+        static BootFromAnyScene()
+        {
+            EditorApplication.playModeStateChanged += Run;
+        }
+
         private static void Run(PlayModeStateChange state)
         {
-            if (state == PlayModeStateChange.EnteredPlayMode)
-                Run();
+            if (state != PlayModeStateChange.EnteredPlayMode)
+                return;
+
+            EditorApplication.playModeStateChanged -= Run;
+            if (SceneManager.GetActiveScene().name != SceneNames.Boot) 
+                SceneManager.LoadScene(SceneNames.Boot);
         }
-        
-        
-#if !UNITY_EDITOR
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-#endif
-        private static void Run()
-            => SceneManager.LoadScene(SceneNames.Boot);
-        
     }
 }
+
+#endif
