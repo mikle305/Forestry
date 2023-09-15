@@ -7,39 +7,38 @@ using UI.WindowsInfo;
 
 namespace GameFlow.States
 {
-    public class EnterUsernameState : GameState
+    public class ChangeNameState : State
     {
         private readonly GameStateMachine _context;
         private readonly SceneLoader _sceneLoader;
-        private readonly InputService _inputService;
+        private readonly MenuService _menuService;
         private readonly AuthService _authService;
 
-        public EnterUsernameState(GameStateMachine context)
+        
+        public ChangeNameState(GameStateMachine context)
         {
             _context = context;
             _sceneLoader = SceneLoader.Instance;
-            _inputService = InputService.Instance;
+            _menuService = MenuService.Instance;
             _authService = AuthService.Instance;
         }
 
         public override void Enter()
         {
-            _sceneLoader.Load(SceneNames.EnterUsername);
+            _sceneLoader.Load(SceneNames.ChangeName);
         }
 
         public override void Update()
         {
-            if (_inputService.IsUsernameEnterInvoked())
-                EnterUsername().Forget();
+            if (_menuService.IsChangeNameInvoked())
+                ChangeName().Forget();
         }
 
-        private async UniTask EnterUsername()
+        private async UniTask ChangeName()
         {
-            string username = EnterUsernameInfo.Instance.Username;
-            
-            _inputService.IsBlocked = true;
-            bool isSucceeded = await _authService.SetUsername(username);
-            _inputService.IsBlocked = false;
+            string username = UsernameInfo.Instance.Username;
+
+            bool isSucceeded = await _menuService.DoAction(_authService.SetUsername(username));
             if (isSucceeded)
                 _context.Enter<MainMenuState>();
         }

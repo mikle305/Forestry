@@ -1,10 +1,9 @@
-﻿using Additional;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Services
+namespace Additional.Game
 {
-    public class MonoBehaviourSingleton<T> : MonoBehaviour
-        where T : MonoBehaviourSingleton<T>
+    public class MonoSingleton<T> : MonoBehaviour
+        where T : MonoSingleton<T>
     {
         private static T _instance;
         

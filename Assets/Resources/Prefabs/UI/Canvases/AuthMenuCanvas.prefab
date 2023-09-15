@@ -4231,7 +4231,7 @@ MonoBehaviour:
   m_CharacterValidation: 7
   m_RegexValue: '"^(?=.[a-zA-Z])(?=.\\d)a-zA-Z\\d{6,}$"'
   m_GlobalPointSize: 14
-  m_CharacterLimit: 15
+  m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -4830,7 +4830,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Reset
+  m_text: Recover
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c480b9ca48bea54b9c9dbe37cf00c06, type: 2}
   m_sharedMaterial: {fileID: 3798590342722743461, guid: 7c480b9ca48bea54b9c9dbe37cf00c06, type: 2}
@@ -5615,7 +5615,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Guest (no rank)
+  m_text: As guest
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c480b9ca48bea54b9c9dbe37cf00c06, type: 2}
   m_sharedMaterial: {fileID: 3798590342722743461, guid: 7c480b9ca48bea54b9c9dbe37cf00c06, type: 2}
@@ -5642,7 +5642,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 67.15
+  m_fontSize: 72
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1

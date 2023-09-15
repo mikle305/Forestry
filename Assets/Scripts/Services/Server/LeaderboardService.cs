@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
+using Additional.Game;
 using Cysharp.Threading.Tasks;
 using Services.Server.Models;
 
 namespace Services.Server
 {
-    public class LeaderboardService : MonoBehaviourSingleton<LeaderboardService>
+    public class LeaderboardService : MonoSingleton<LeaderboardService>
     {
         private DbProvider _dbProvider;
 

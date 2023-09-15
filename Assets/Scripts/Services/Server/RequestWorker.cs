@@ -2,12 +2,13 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Additional.Constants;
+using Additional.Game;
 using Cysharp.Threading.Tasks;
 using Services.Notifications;
 
 namespace Services.Server
 {
-    public class RequestWorker : MonoBehaviourSingleton<RequestWorker>
+    public class RequestWorker : MonoSingleton<RequestWorker>
     {
         private MessageNotifier _messageNotifier;
 
@@ -47,40 +48,33 @@ namespace Services.Server
             TimeSpan maxRequestTimeout = TimeSpan.FromSeconds(timeout);
             cts.CancelAfterSlim(maxRequestTimeout);
 
-            var errorResponse = new ErrorResponse();
-            var success = false;
-            await request
-                .ContinueWith(task =>
-                {
-                    if (task.IsCanceled)
-                        errorResponse.InternalError = ErrorId.RequestTimeout;
-                    else if (task.IsFaulted)
-                        if (task.Exception != null)
-                            errorResponse.ExternalError = GetExternalError(task);
-                        else
-                            errorResponse.InternalError = ErrorId.Unknown;
-                    else
-                        success = true;
-                }, cts.Token)
-                .AsUniTask();
-
-            if (success)
+            try
             {
+                await request.AsUniTask().AttachExternalCancellation(cts.Token);
+                
                 actionOnSuccess?.Invoke();
-                HandleMessage(messageOnSuccess);
+                if (messageOnSuccess != null)
+                    _messageNotifier.NotifyMessage((MessageId)messageOnSuccess);
             }
-            else
+            catch (OperationCanceledException)
             {
-                HandleError(errorResponse);
+                _messageNotifier.NotifyError(ErrorId.RequestTimeout);
+            }
+            catch (Exception ex)
+            {
+                string externalError = GetExternalError(ex);
+                if (string.IsNullOrEmpty(externalError))
+                    _messageNotifier.NotifyError(ErrorId.Unknown);
+                else
+                    _messageNotifier.NotifyError(externalError);
             }
         }
 
-        private static string GetExternalError(Task task)
+        private static string GetExternalError(Exception exception)
         {
-            if (task.Exception == null)
+            if (exception == null)
                 return string.Empty;
-
-            Exception exception = task.Exception;
+            
             while (true)
             {
                 if (exception is not AggregateException aggregateException ||
@@ -91,26 +85,6 @@ namespace Services.Server
             }
 
             return exception.Message;
-        }
-
-        private void HandleMessage(MessageId? messageOnSuccess)
-        {
-            if (messageOnSuccess != null)
-                _messageNotifier.NotifyMessage((MessageId)messageOnSuccess);
-        }
-
-        private void HandleError(ErrorResponse errorResponse)
-        {
-            if (errorResponse.InternalError != null)
-                _messageNotifier.NotifyError((ErrorId)errorResponse.InternalError);
-            else if (!string.IsNullOrEmpty(errorResponse.ExternalError))
-                _messageNotifier.NotifyError(errorResponse.ExternalError);
-        }
-
-        private class ErrorResponse
-        {
-            public ErrorId? InternalError { get; set; }
-            public string ExternalError { get; set; } = string.Empty;
         }
     }
 }

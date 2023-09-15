@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using Additional.Game;
 using Cysharp.Threading.Tasks;
 using Services.Server.Models;
 
 namespace Services.Server
 {
-    public class DbProvider : MonoBehaviourSingleton<DbProvider>
+    public class DbProvider : MonoSingleton<DbProvider>
     {
         private RequestWorker _requestWorker;
         private AuthApiService _authApiService;

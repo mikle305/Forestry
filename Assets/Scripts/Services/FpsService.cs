@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+﻿using Additional.Game;
 
 namespace Services
 {
-    public class FpsService : MonoBehaviourSingleton<FpsService>
+    public class FpsService : MonoSingleton<FpsService>
     {
         protected override void Awake()
         {

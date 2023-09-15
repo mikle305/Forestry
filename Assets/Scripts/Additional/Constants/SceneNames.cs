@@ -5,7 +5,7 @@
         public const string Boot = "BootstrapScene";
         public const string Level = "LevelScene";
         public const string MainMenu = "MainMenuScene";
-        public const string AuthMenu = "AuthMenuScene";
-        public const string EnterUsername = "EnterUsernameScene";
+        public const string EmailAuth = "EmailAuthScene";
+        public const string ChangeName = "ChangeNameScene";
     }
 }

@@ -1,9 +1,10 @@
 ﻿using System.Text.RegularExpressions;
+using Additional.Game;
 using Services.Notifications;
 
 namespace Services.Server
 {
-    public class AuthValidator : MonoBehaviourSingleton<AuthValidator>
+    public class AuthValidator : MonoSingleton<AuthValidator>
     {
         private const string _emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
         private const string _passwordPattern = @"^[a-zA-Z0-9]{8,}$";

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Additional.Game;
 
 namespace Services.Notifications
 {
-    public class MessageNotifier : MonoBehaviourSingleton<MessageNotifier>
+    public class MessageNotifier : MonoSingleton<MessageNotifier>
     {
         private Dictionary<ErrorId, string> _internalErrors;
         private Dictionary<MessageId, string> _internalMessages;

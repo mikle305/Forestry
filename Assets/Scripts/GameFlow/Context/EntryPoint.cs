@@ -1,10 +1,10 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using Additional.Game;
+using Cysharp.Threading.Tasks;
 using GameFlow.States;
-using Services;
 
 namespace GameFlow.Context
 {
-    public class EntryPoint : MonoBehaviourSingleton<EntryPoint>
+    public class EntryPoint : MonoSingleton<EntryPoint>
     {
         private GameStateMachine _stateMachine;
 
@@ -16,7 +16,7 @@ namespace GameFlow.Context
         {
             await UniTask.Yield();
             _stateMachine = CreateStateMachine();
-            _stateMachine.Enter<AuthMenuState>();
+            _stateMachine.Enter<CheckSessionState>();
         }
 
         private void Update() 
@@ -25,15 +25,15 @@ namespace GameFlow.Context
         private GameStateMachine CreateStateMachine()
         {
             var stateMachine = new GameStateMachine();
-            GameState[] states = {
+            State[] states = {
                 new CheckSessionState(stateMachine),
-                new AuthMenuState(stateMachine),
-                new EnterUsernameState(stateMachine),
+                new EmailAuthState(stateMachine),
+                new ChangeNameState(stateMachine),
                 new MainMenuState(stateMachine),
                 new LevelState(stateMachine),
             };
 
-            foreach (GameState state in states) 
+            foreach (State state in states) 
                 stateMachine.AddState(state);
 
             return stateMachine;

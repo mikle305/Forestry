@@ -1,11 +1,11 @@
-﻿using Services;
+﻿using Additional.Game;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI.WindowsInfo
 {
-    public class LoginInfo : MonoBehaviourSingleton<LoginInfo>
+    public class EmailLoginInfo : MonoSingleton<EmailLoginInfo>
     {
         [SerializeField] private TMP_InputField _emailField;
         [SerializeField] private TMP_InputField _passwordField;

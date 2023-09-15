@@ -1,6 +1,6 @@
 ﻿namespace GameFlow.States
 {
-    public abstract class GameState
+    public abstract class State
     {
         public virtual void Enter() {}
 

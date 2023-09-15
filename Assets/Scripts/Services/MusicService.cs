@@ -1,10 +1,10 @@
-using StaticData;
+using Additional.Game;
 using StaticData.Music;
 using UnityEngine;
 
 namespace Services
 {
-    public class MusicService : MonoBehaviourSingleton<MusicService>
+    public class MusicService : MonoSingleton<MusicService>
     {
         [SerializeField] private AudioSource _audioSource;
     

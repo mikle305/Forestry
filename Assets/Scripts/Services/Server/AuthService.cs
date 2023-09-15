@@ -1,29 +1,29 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using Additional.Game;
+using Cysharp.Threading.Tasks;
+using Nakama;
 using Services.Server.Models;
 
 namespace Services.Server
 {
-    public class AuthService : MonoBehaviourSingleton<AuthService>
+    public class AuthService : MonoSingleton<AuthService>
     {
         private AuthValidator _authValidator;
         private AuthApiService _authApiService;
-        private DbProvider _dbProvider;
+        private ISession _session;
+        /*string authToken = _session.AuthToken;
+        bool isExpired = Session.Restore(authToken).IsExpired;*/
 
-
-        public Player Player => new()
+        public ProfileData ProfileData => new()
         {
-            Id = string.Empty, /*_authApiService.CurrentUser.UserId,*/
-            Username = string.Empty, /*_authApiService.CurrentUser.DisplayName,*/
+            Id = _session.UserId,
+            Username = _session.Username,
         };
-
-        public bool IsGuest { get; set; }
 
         
         private void Start()
         {
             _authApiService = AuthApiService.Instance;
             _authValidator = AuthValidator.Instance;
-            _dbProvider = DbProvider.Instance;
         }
 
         public async UniTask<bool> DoRegister(string email, string password, string username)
@@ -33,7 +33,8 @@ namespace Services.Server
                 !_authValidator.ValidateUsername(username))
                 return false;
 
-            return await _authApiService.Register(email, password);
+            _session = await _authApiService.AuthEmail(email, password, username);
+            return _session != null;
         }
 
         public async UniTask<bool> DoLogin(string email, string password)
@@ -42,7 +43,14 @@ namespace Services.Server
                 !_authValidator.ValidatePassword(password))
                 return false;
 
-            return await _authApiService.Login(email, password);
+            _session = await _authApiService.AuthEmail(email, password, isRegistration: false);
+            return _session != null;
+        }
+
+        public async UniTask<bool> AuthGuest()
+        {
+            _session = await _authApiService.AuthGuest(null);
+            return _session != null;
         }
 
         public async UniTask<bool> SetUsername(string username)
@@ -50,11 +58,7 @@ namespace Services.Server
             if (!_authValidator.ValidateUsername(username))
                 return false;
 
-            bool isDisplayDone = await _authApiService.SetUsername(username);
-            if (!isDisplayDone)
-                return false;
-
-            return await _dbProvider.SetUsername(username);
+            return await _authApiService.SetUsername(_session, username);
         }
 
         public async UniTask<bool> ResetPassword(string email)

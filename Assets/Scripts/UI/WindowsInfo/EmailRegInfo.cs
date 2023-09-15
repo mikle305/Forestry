@@ -1,10 +1,10 @@
-﻿using Services;
+﻿using Additional.Game;
 using TMPro;
 using UnityEngine;
 
 namespace UI.WindowsInfo
 {
-    public class RegistrationInfo : MonoBehaviourSingleton<RegistrationInfo>
+    public class EmailRegInfo : MonoSingleton<EmailRegInfo>
     {
         [SerializeField] private TMP_InputField _emailField;
         [SerializeField] private TMP_InputField _passwordField;

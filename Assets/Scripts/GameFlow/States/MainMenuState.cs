@@ -4,18 +4,18 @@ using Services;
 
 namespace GameFlow.States
 {
-    public class MainMenuState : GameState
+    public class MainMenuState : State
     {
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
-        private readonly InputService _inputService;
+        private readonly MenuService _menuService;
 
 
         public MainMenuState(GameStateMachine gameStateMachine)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = SceneLoader.Instance;
-            _inputService = InputService.Instance;
+            _menuService = MenuService.Instance;
         }
 
         public override void Enter()
@@ -25,7 +25,7 @@ namespace GameFlow.States
 
         public override void Update()
         {
-            if (_inputService.IsPlayInvoked())
+            if (_menuService.IsPlayInvoked())
                 _gameStateMachine.Enter<LevelState>();
         }
     }

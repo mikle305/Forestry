@@ -2,7 +2,7 @@
 
 namespace GameFlow.States
 {
-    public class CheckSessionState : GameState
+    public class CheckSessionState : State
     {
         private readonly GameStateMachine _context;
 
@@ -13,7 +13,7 @@ namespace GameFlow.States
 
         public override void Enter()
         {
-            _context.Enter<AuthMenuState>();
+            _context.Enter<EmailAuthState>();
         }
 
         /*private async UniTask CheckSession()

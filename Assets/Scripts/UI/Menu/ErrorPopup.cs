@@ -1,4 +1,4 @@
-﻿using Services;
+﻿using Additional.Game;
 using Services.Notifications;
 using TMPro;
 using UI.Windows;
@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace UI.Menu
 {
-    public class ErrorPopup : MonoBehaviourSingleton<ErrorPopup>
+    public class ErrorPopup : MonoSingleton<ErrorPopup>
     {
         [SerializeField] private Window _popupWindow;
         [SerializeField] private TextMeshProUGUI _text;

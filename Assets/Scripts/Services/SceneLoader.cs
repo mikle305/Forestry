@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections;
-using UI;
+using Additional.Game;
 using UI.Loading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Services
 {
-    public class SceneLoader : MonoBehaviourSingleton<SceneLoader>
+    public class SceneLoader : MonoSingleton<SceneLoader>
     {
         private LoadingCurtain _loadingCurtain;
 

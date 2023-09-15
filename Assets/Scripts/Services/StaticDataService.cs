@@ -1,11 +1,12 @@
 ﻿using Additional.Constants;
+using Additional.Game;
 using StaticData;
 using StaticData.Music;
 using UnityEngine;
 
 namespace Services
 {
-    public class StaticDataService : MonoBehaviourSingleton<StaticDataService>
+    public class StaticDataService : MonoSingleton<StaticDataService>
     {
         private MusicConfig _musicConfig;
         private AppConfig _appConfig;

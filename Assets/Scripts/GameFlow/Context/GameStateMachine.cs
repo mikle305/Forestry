@@ -7,11 +7,11 @@ namespace GameFlow.Context
 {
     public class GameStateMachine
     {
-        private GameState _currentState;
-        private readonly Dictionary<Type, GameState> _states = new();
+        private State _currentState;
+        private readonly Dictionary<Type, State> _states = new();
 
 
-        public void Enter<T>() where T : GameState
+        public void Enter<T>() where T : State
         {
             _currentState?.Exit();
             _currentState = _states[typeof(T)];
@@ -23,7 +23,7 @@ namespace GameFlow.Context
             _currentState?.Update();
         }
 
-        public void AddState(GameState state)
+        public void AddState(State state)
         {
             Type type = state.GetType();
             if (_states.ContainsKey(type))

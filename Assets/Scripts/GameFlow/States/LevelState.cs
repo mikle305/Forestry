@@ -1,12 +1,11 @@
 ﻿using Additional.Constants;
 using GameFlow.Context;
 using Services;
-using StaticData;
 using StaticData.Music;
 
 namespace GameFlow.States
 {
-    public class LevelState : GameState
+    public class LevelState : State
     {
         private readonly GameStateMachine _context;
         private readonly SceneLoader _sceneLoader;

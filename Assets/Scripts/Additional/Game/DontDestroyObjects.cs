@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GameFlow
+namespace Additional.Game
 {
     public class DontDestroyObjects : MonoBehaviour
     {

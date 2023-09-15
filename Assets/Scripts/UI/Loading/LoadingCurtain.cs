@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections;
+using Additional.Game;
 using ScreenTransitions;
-using Services;
 using UnityEngine;
 
 namespace UI.Loading
 {
-    public class LoadingCurtain : MonoBehaviourSingleton<LoadingCurtain>
+    public class LoadingCurtain : MonoSingleton<LoadingCurtain>
     {
         [SerializeField] private TransitionScreen _transitionScreen;
         [SerializeField] private LoadingText _loadingText;

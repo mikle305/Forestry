@@ -1,10 +1,9 @@
-﻿using System;
-using Services.Server.Models;
+﻿using Services.Server.Models;
 using TMPro;
 using UI.Windows;
 using UnityEngine;
 
-namespace UI.WindowsInfo
+namespace UI.Leaderboard
 {
     public class LeaderBoxInfo : MonoBehaviour
     {

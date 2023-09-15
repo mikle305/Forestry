@@ -2,7 +2,7 @@
 {
     public static class ServerConstants
     {
-        public const int DefaultRequestTimeout = 10;
+        public const int DefaultRequestTimeout = 3;
         public const int GameLeadersCount = 6;
     }
 }

@@ -1,7 +1,7 @@
 using Services;
 using UnityEngine;
 
-namespace UI
+namespace Additional.Game
 {
     [RequireComponent(typeof(Canvas))]
     public class UiCameraSetter : MonoBehaviour

@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Services.Server.Models;
-using UI.WindowsInfo;
 using UnityEngine;
 
-namespace UI
+namespace UI.Leaderboard
 {
     public class LeaderboardView : MonoBehaviour
     {

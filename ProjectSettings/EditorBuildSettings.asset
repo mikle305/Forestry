@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/BootstrapScene.unity
     guid: 5257e9cf8d6df204fa35360d71a98021
   - enabled: 1
-    path: Assets/Scenes/AuthMenuScene.unity
+    path: Assets/Scenes/EmailAuthScene.unity
     guid: b0ba63c8a11ccf145be24004b8f012f0
   - enabled: 1
     path: Assets/Scenes/EnterUsernameScene.unity
