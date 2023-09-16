@@ -17,7 +17,7 @@ namespace UI.Menu
         private void Start()
         {
             _settingsService = SettingsService.Instance;
-            _settings = _settingsService.Settings;
+            _settings = _settingsService.GetSettings();
             UpdateView();
             InitViewEvents();
         }

@@ -1,4 +1,5 @@
-﻿using Additional.Game;
+﻿using System;
+using Additional.Game;
 using SaveData;
 
 namespace Services.Save
@@ -9,6 +10,7 @@ namespace Services.Save
         private ISaveStorage<PlayerProgress> _storage;
         
         public PlayerProgress Progress { get; private set; }
+        public event Action ProgressLoaded;
 
 
         private void Start()
@@ -24,6 +26,7 @@ namespace Services.Save
         public void Load()
         {
             Progress = _storage.Load() ?? new PlayerProgress();
+            ProgressLoaded?.Invoke();
         }
     }
 }
