@@ -16,7 +16,7 @@ namespace GameFlow.Context
         {
             await UniTask.Yield();
             _stateMachine = CreateStateMachine();
-            _stateMachine.Enter<CheckSessionState>();
+            _stateMachine.Enter<ProgressLoadingState>();
         }
 
         private void Update() 
@@ -26,7 +26,9 @@ namespace GameFlow.Context
         {
             var stateMachine = new GameStateMachine();
             State[] states = {
-                new CheckSessionState(stateMachine),
+                new ProgressLoadingState(stateMachine),
+                new SessionRestoringState(stateMachine),
+                new AuthSelectionState(stateMachine),
                 new EmailAuthState(stateMachine),
                 new ChangeNameState(stateMachine),
                 new MainMenuState(stateMachine),

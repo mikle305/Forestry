@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Additional
+namespace Additional.Utils
 {
     public static class ThrowUtils
     {

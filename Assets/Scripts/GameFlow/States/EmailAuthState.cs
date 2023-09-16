@@ -47,7 +47,7 @@ namespace GameFlow.States
             string password = emailRegInfo.Password;
             string username = emailRegInfo.Username;
             
-            bool isSucceeded = await _menuService.DoAction(_authService.DoRegister(email, password, username));
+            bool isSucceeded = await _menuService.DoAction(_authService.DoEmailRegister(email, password, username));
             if (isSucceeded)
                 _context.Enter<MainMenuState>();
         }
@@ -58,7 +58,7 @@ namespace GameFlow.States
             string email = emailLoginInfo.Email;
             string password = emailLoginInfo.Password;
 
-            bool isSucceeded = await _menuService.DoAction(_authService.DoLogin(email, password));
+            bool isSucceeded = await _menuService.DoAction(_authService.DoEmailLogin(email, password));
             if (isSucceeded)
                 _context.Enter<MainMenuState>();
         }
