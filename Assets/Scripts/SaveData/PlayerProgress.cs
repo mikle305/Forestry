@@ -6,6 +6,7 @@ namespace SaveData
     [Serializable]
     public class PlayerProgress
     {
-        [FormerlySerializedAs("AuthKey")] public string AuthToken = string.Empty;
+        public string AuthToken = string.Empty;
+        public SettingsData SettingsData = new();
     }
 }

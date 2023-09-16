@@ -9,7 +9,6 @@ namespace Services.Server
     {
         private AuthValidator _authValidator;
         private AuthApiService _authApiService;
-        private ProgressAccess _progressAccess;
         private SaveService _saveService;
 
         private ISession _session;
@@ -19,13 +18,12 @@ namespace Services.Server
         {
             _authApiService = AuthApiService.Instance;
             _authValidator = AuthValidator.Instance;
-            _progressAccess = ProgressAccess.Instance;
             _saveService = SaveService.Instance;
         }
 
         public bool RestoreSession()
         {
-            string savedAuthToken = _progressAccess.Progress.AuthToken;
+            string savedAuthToken = _saveService.Progress.AuthToken;
             if (string.IsNullOrEmpty(savedAuthToken))
                 return false;
             
@@ -89,7 +87,7 @@ namespace Services.Server
             if (_session == null)
                 return;
 
-            _progressAccess.Progress.AuthToken = _session.AuthToken;
+            _saveService.Progress.AuthToken = _session.AuthToken;
             _saveService.Save();
             print($"Session saved {_session.AuthToken}");
         }

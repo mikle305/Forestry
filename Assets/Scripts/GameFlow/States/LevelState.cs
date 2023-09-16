@@ -30,7 +30,6 @@ namespace GameFlow.States
 
         private void OnLevelLoaded()
         {
-            _musicService.Play(MusicId.Fight);
         }
     }
 }

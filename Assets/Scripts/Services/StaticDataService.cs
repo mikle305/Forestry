@@ -18,8 +18,8 @@ namespace Services
         public AppConfig GetAppConfig()
             => _appConfig ??= LoadData<AppConfig>(StaticDataPaths.AppConfig);
 
-        private T LoadData<T>(string path) 
-            where T : ScriptableObject
+        private static T LoadData<T>(string path) 
+            where T : Object
             => Resources.Load<T>(path);
     }
 }

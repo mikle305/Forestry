@@ -7,24 +7,23 @@ namespace Services.Save
     {
         private const string _progressKey = "Progress";
         private ISaveStorage<PlayerProgress> _storage;
-        private ProgressAccess _progressAccess;
+        
+        public PlayerProgress Progress { get; private set; }
 
 
         private void Start()
         {
             _storage = new PlayerPrefsStorage<PlayerProgress>(_progressKey);
-            _progressAccess = ProgressAccess.Instance;
         }
         
         public void Save()
         {
-            PlayerProgress progress = _progressAccess.Progress;
-            _storage.Save(progress);
+            _storage.Save(Progress);
         }
 
-        public PlayerProgress Load()
+        public void Load()
         {
-            return _storage.Load();
+            Progress = _storage.Load() ?? new PlayerProgress();
         }
     }
 }

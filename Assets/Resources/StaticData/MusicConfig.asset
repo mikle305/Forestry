@@ -17,3 +17,4 @@ MonoBehaviour:
     _clip: {fileID: 8300000, guid: e4d7f134994e1304fa46c49eec1346fe, type: 3}
   - _id: 1
     _clip: {fileID: 8300000, guid: 7ba32afd15e47b240b0e9b27faed7503, type: 3}
+  <AudioMixer>k__BackingField: {fileID: 24100000, guid: e58abe0e1f4a7dc42b6fa0def29b3fef, type: 2}
