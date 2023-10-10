@@ -2,7 +2,7 @@
 
 namespace ScreenTransitions
 {
-    public class TransitionOperation : ITransitionOperation
+    public class TransitionOperation
     {
         public event Action OnCompleted;
         

@@ -89,7 +89,6 @@ namespace Services.Server
 
             _saveService.Progress.AuthToken = _session.AuthToken;
             _saveService.Save();
-            print($"Session saved {_session.AuthToken}");
         }
     }
 }

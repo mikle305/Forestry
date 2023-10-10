@@ -32,7 +32,7 @@ namespace UI.Loading
 
         private void StartTransition(bool isActive, Action onTransitionEnded)
         {
-            ITransitionOperation transitionOperation;
+            TransitionOperation transitionOperation;
             if (isActive)
             {
                 if (_transitionAlreadyShown)

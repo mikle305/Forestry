@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2895626891878504735}
   - component: {fileID: 3659120902713855801}
   m_Layer: 5
-  m_Name: Circle Transition Screen
+  m_Name: CircleTransitionScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -92,6 +91,8 @@ MonoBehaviour:
   _shaderParam: _Progress
   _beginValue: 1.5
   _endValue: 0
+  _setDefaultValueOnStart: 1
+  _defaultValue: 0
   _enterData:
     Duration: 0.8
     Ease: 1
