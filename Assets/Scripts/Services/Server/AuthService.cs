@@ -1,6 +1,5 @@
 ﻿using Additional.Game;
 using Cysharp.Threading.Tasks;
-using Nakama;
 using Services.Save;
 
 namespace Services.Server
@@ -11,7 +10,7 @@ namespace Services.Server
         private AuthApiService _authApiService;
         private SaveService _saveService;
 
-        private ISession _session;
+        private Nakama.ISession _session;
 
 
         private void Start()
@@ -27,12 +26,11 @@ namespace Services.Server
             if (string.IsNullOrEmpty(savedAuthToken))
                 return false;
             
-            ISession session = Session.Restore(savedAuthToken);
+            Nakama.ISession session = Nakama.Session.Restore(savedAuthToken);
             if (session.IsExpired)
                 return false;
 
             _session = session;
-            print($"Session restored: {_session.AuthToken}");
             return true;
         }
 

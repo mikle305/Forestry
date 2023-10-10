@@ -38,6 +38,12 @@ namespace Services.Server
             return response;
         }
 
+        public async UniTask OperationNotSupported()
+        {
+            await UniTask.CompletedTask;
+            _messageNotifier.NotifyError(ErrorId.OperationNotSupported);
+        }
+
         private async UniTask ProcessRequest(
             Task request,
             float timeout,

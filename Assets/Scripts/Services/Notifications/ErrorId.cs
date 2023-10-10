@@ -6,6 +6,7 @@
         Unknown,
         InvalidEmail,
         InvalidPassword,
-        InvalidUsername,
+        InvalidUsername, 
+        OperationNotSupported,
     }
 }

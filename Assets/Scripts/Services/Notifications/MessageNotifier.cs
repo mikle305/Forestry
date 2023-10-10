@@ -20,9 +20,10 @@ namespace Services.Notifications
             {
                 { ErrorId.RequestTimeout, "Request timeout error" },
                 { ErrorId.Unknown, "Unknown error" },
-                { ErrorId.InvalidEmail, "Invalid email form"},
+                { ErrorId.InvalidEmail, "Invalid email form" },
                 { ErrorId.InvalidPassword, "Invalid password form\nMin 8 symbols\nLetters must be english" },
                 { ErrorId.InvalidUsername, "Invalid username form\nMin 6 symbols\nEnglish and nums only" },
+                { ErrorId.OperationNotSupported, "Operation is not supported yet" },
             };
 
             _internalMessages = new Dictionary<MessageId, string>
@@ -36,7 +37,7 @@ namespace Services.Notifications
             string message = _internalMessages[messageId];
             NotificationHappened?.Invoke(message);
         }
-        
+
         public void NotifyError(ErrorId errorId)
         {
             string message = _internalErrors[errorId];

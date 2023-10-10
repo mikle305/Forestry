@@ -1,5 +1,4 @@
-﻿using SaveData;
-using Services;
+﻿using Services;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,13 +10,11 @@ namespace UI.Menu
         [SerializeField] private Slider _volumeSlider;
 
         private SettingsService _settingsService;
-        private SettingsData _settings;
 
 
         private void Start()
         {
             _settingsService = SettingsService.Instance;
-            _settings = _settingsService.GetSettings();
             UpdateView();
             InitViewEvents();
         }
@@ -25,7 +22,7 @@ namespace UI.Menu
         private void InitViewEvents()
         {
             _volumeSlider.onValueChanged.AddListener(
-                value => _settings.Volume = value);
+                value => _settingsService.Settings.Volume = value);
             
             _applyButton.onClick.AddListener(
                 () => _settingsService.Apply());
@@ -33,7 +30,7 @@ namespace UI.Menu
 
         private void UpdateView()
         {
-            _volumeSlider.value = _settings.Volume;
+            _volumeSlider.value = _settingsService.Settings.Volume;
         }
     }
 }

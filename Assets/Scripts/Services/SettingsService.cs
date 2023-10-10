@@ -11,17 +11,16 @@ namespace Services
         private const string _volumeMixerParameter = "Volume";
         private SaveService _saveService;
         private AudioMixer _audioMixer;
+        
+        public SettingsData Settings => _saveService.Progress.SettingsData;
 
-
+        
         private void Start()
         {
             _saveService = SaveService.Instance;
             _audioMixer = StaticDataService.Instance.GetMusicConfig().AudioMixer;
             _saveService.ProgressLoaded += ApplySettings;
         }
-
-        public SettingsData GetSettings() 
-            => _saveService.Progress.SettingsData;
 
         public void Apply()
         {
@@ -31,11 +30,10 @@ namespace Services
 
         private void ApplySettings()
         {
-            SettingsData settings = GetSettings();
-            SetVolume(settings);
+            SetVolume();
         }
         
-        private void SetVolume(SettingsData settings)
-            => _audioMixer.SetFloat(_volumeMixerParameter, Mathf.Log10(settings.Volume) * 20);
+        private void SetVolume()
+            => _audioMixer.SetFloat(_volumeMixerParameter, Mathf.Log10(Settings.Volume) * 20);
     }
 }

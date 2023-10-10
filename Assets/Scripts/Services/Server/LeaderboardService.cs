@@ -22,7 +22,7 @@ namespace Services.Server
 
         public async UniTask<bool> GetGamePointsLeaders()
         {
-            var leaders = await _dbProvider.GetGamePointsLeaders();
+            Leader[] leaders = await _dbProvider.GetGamePointsLeaders();
             if (leaders == null)
                 return false;
             

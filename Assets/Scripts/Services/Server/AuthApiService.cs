@@ -40,6 +40,9 @@ namespace Services.Server
                 request: _nakamaConnection.Client.UpdateAccountAsync(session, username));
 
         public async UniTask<bool> RequestPasswordReset(string email)
-            => false;
+        {
+            await _requestWorker.OperationNotSupported();
+            return false;
+        }
     }
 }
