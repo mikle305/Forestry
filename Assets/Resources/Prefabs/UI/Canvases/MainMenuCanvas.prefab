@@ -1976,6 +1976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 487fbd523b37b884cbc4c79d1a56518e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _settingsWindow: {fileID: 7423955442600084296}
   _applyButton: {fileID: 3992687994342351061}
   _volumeSlider: {fileID: 1335634762019992002}
 --- !u!1 &8714484376601929083

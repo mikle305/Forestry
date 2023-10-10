@@ -12,8 +12,8 @@ namespace UI.Windows
 
         private Tween _tween;
 
-        
-        public override void Show(Action onStart = null, Action onDone = null)
+
+        protected override void Show(Action onStart = null, Action onDone = null)
         {
             _tween?.Kill();
             _tween = _canvasGroup
@@ -22,7 +22,7 @@ namespace UI.Windows
                 .OnComplete(() => onDone?.Invoke());
         }
 
-        public override void Hide(Action onStart = null, Action onDone = null)
+        protected override void Hide(Action onStart = null, Action onDone = null)
         {
             _tween?.Kill();
             _tween = _canvasGroup

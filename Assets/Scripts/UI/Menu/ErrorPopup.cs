@@ -28,14 +28,14 @@ namespace UI.Menu
         {
             _text.text = message;
             _invisibleBackground.SetActive(true);
-            _popupWindow.Show();
+            _popupWindow.Toggle(ToggleMode.Open);
         }
 
         private void HidePopup()
         {
             _text.text = string.Empty;
             _invisibleBackground.SetActive(false);
-            _popupWindow.Hide();
+            _popupWindow.Toggle(ToggleMode.Close);
         }
     }
 }

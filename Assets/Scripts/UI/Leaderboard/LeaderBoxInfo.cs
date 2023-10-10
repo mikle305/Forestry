@@ -23,7 +23,7 @@ namespace UI.Leaderboard
             _rankText.text = leader.Rank.ToString();
             _usernameText.text = leader.Username;
             _scoreText.text = leader.Score.ToString();
-            _window.Show();
+            _window.Toggle(ToggleMode.Open);
         }
     }
 }

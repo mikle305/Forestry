@@ -7,14 +7,13 @@ namespace UI.Windows
     {
         [SerializeField] private Button _button;
         [SerializeField] private Window _window;
+        [SerializeField] private ToggleMode _toggleMode = ToggleMode.Toggle;
         
 
         private void Start()
-        {
-            _button.onClick.AddListener(OnButtonClicked);
-        }
+            => _button.onClick.AddListener(ToggleWindow);
 
-        private void OnButtonClicked() 
-            => _window.Toggle();
+        private void ToggleWindow()
+            => _window.Toggle(_toggleMode);
     }
 }
