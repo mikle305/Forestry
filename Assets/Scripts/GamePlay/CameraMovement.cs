@@ -5,6 +5,7 @@ namespace GamePlay
 {
     public class CameraMovement : MonoBehaviour
     {
+        [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private float _speed = 20;
         
         private InputService _inputService;
@@ -29,10 +30,8 @@ namespace GamePlay
 
         private void UpdatePosition()
         {
-            
-            
             Vector2 moveDirection = _inputService.GetMoveDirection();
-            transform.position += (Vector3) (_speed * _speedFactor * Time.deltaTime * moveDirection);
+            _rb.velocity = _speed * _speedFactor * moveDirection;
         }
     }
 }
