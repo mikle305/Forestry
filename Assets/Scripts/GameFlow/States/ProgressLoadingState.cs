@@ -18,7 +18,7 @@ namespace GameFlow.States
         public override void Enter()
         {
             _saveService.Load();
-            _context.Enter<SessionRestoringState>();
+            _context.Enter<LevelState>();
         }
     }
 }

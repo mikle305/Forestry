@@ -31,10 +31,8 @@ namespace GamePlay
             _cameraMovement.SetSpeedFactor(zoomCoefficient);
         }
         
-        /// <summary>
-        /// Coefficient of zooming
-        /// </summary>
-        /// <returns></returns>
+        /// <summary></summary>
+        /// <returns>Coefficient of zooming</returns>
         private float UpdateZoom()
         {
             float zoomDirection = _inputService.GetZoomDirection();

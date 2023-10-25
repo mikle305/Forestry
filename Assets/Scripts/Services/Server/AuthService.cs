@@ -1,5 +1,6 @@
 ﻿using Additional.Game;
 using Cysharp.Threading.Tasks;
+using Nakama;
 using Services.Save;
 
 namespace Services.Server
@@ -10,7 +11,7 @@ namespace Services.Server
         private AuthApiService _authApiService;
         private SaveService _saveService;
 
-        private Nakama.ISession _session;
+        public ISession Session { get; private set; }
 
 
         private void Start()
@@ -26,11 +27,11 @@ namespace Services.Server
             if (string.IsNullOrEmpty(savedAuthToken))
                 return false;
             
-            Nakama.ISession session = Nakama.Session.Restore(savedAuthToken);
+            ISession session = Nakama.Session.Restore(savedAuthToken);
             if (session.IsExpired)
                 return false;
 
-            _session = session;
+            Session = session;
             return true;
         }
 
@@ -41,9 +42,9 @@ namespace Services.Server
                 !_authValidator.ValidateUsername(username))
                 return false;
 
-            _session = await _authApiService.AuthEmail(email, password, username);
+            Session = await _authApiService.AuthEmail(email, password, username);
             SaveAuthToken();
-            return _session != null;
+            return Session != null;
         }
 
         public async UniTask<bool> DoEmailLogin(string email, string password)
@@ -52,16 +53,16 @@ namespace Services.Server
                 !_authValidator.ValidatePassword(password))
                 return false;
 
-            _session = await _authApiService.AuthEmail(email, password, isRegistration: false);
+            Session = await _authApiService.AuthEmail(email, password, isRegistration: false);
             SaveAuthToken();
-            return _session != null;
+            return Session != null;
         }
 
         public async UniTask<bool> AuthGuest()
         {
-            _session = await _authApiService.AuthGuest(null);
+            Session = await _authApiService.AuthGuest(null);
             SaveAuthToken();
-            return _session != null;
+            return Session != null;
         }
 
         public async UniTask<bool> SetUsername(string username)
@@ -69,7 +70,7 @@ namespace Services.Server
             if (!_authValidator.ValidateUsername(username))
                 return false;
 
-            return await _authApiService.SetUsername(_session, username);
+            return await _authApiService.SetUsername(Session, username);
         }
 
         public async UniTask<bool> ResetPassword(string email)
@@ -82,10 +83,10 @@ namespace Services.Server
 
         private void SaveAuthToken()
         {
-            if (_session == null)
+            if (Session == null)
                 return;
 
-            _saveService.Progress.AuthToken = _session.AuthToken;
+            _saveService.Progress.AuthToken = Session.AuthToken;
             _saveService.Save();
         }
     }

@@ -7,6 +7,10 @@ namespace Services
     {
         [SerializeField] private Camera _uiCamera;
         
+        private Camera _mainCamera;
+
+        
         public Camera UICamera => _uiCamera;
+        public Camera MainCamera => _mainCamera ??= Camera.main;
     }
 }

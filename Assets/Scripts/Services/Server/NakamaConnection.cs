@@ -11,6 +11,7 @@ namespace Services.Server
         
         public IClient Client => _client ??= CreateClient();
         
+        
         private IClient CreateClient()
         {
             _staticDataService ??= StaticDataService.Instance;
