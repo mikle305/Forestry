@@ -2,7 +2,7 @@
 using Services;
 using UnityEngine;
 
-namespace GamePlay
+namespace GamePlay.Camera
 {
     public class CameraZoom : MonoBehaviour
     {
