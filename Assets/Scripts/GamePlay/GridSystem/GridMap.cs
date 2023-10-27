@@ -21,6 +21,8 @@ namespace GamePlay.GridSystem
         public void Init(Tile[,] map)
         {
             _map = map;
+            ClearMapTexts();
+            ShowMapTexts();
         }
 
         
